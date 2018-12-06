@@ -1,10 +1,12 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 
 import Typography from '@material-ui/core/Typography';
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Matchday from './Matchday';
 import Results from './Results';
+import AllTimeTable from './AllTimeTable';
 
 
 class Dashboard extends React.Component {
@@ -33,7 +35,7 @@ class Dashboard extends React.Component {
 
     render() {
 
-        const { loading, matchday, results } = this.state;
+        const { loading, matchday, results, allTimeTable } = this.state;
 
         return (
             <React.Fragment >
@@ -47,10 +49,23 @@ class Dashboard extends React.Component {
                         </div>
                     </React.Fragment>}
                 {!loading && <React.Fragment>
-                    <div >
-                        <Matchday matchday={matchday} />
-                        <Results results={results} />
-                    </div>
+                    <Grid container justify="space-between" alignItems="center" direction="row">
+                        <Grid item xs={12}>
+                            <Matchday matchday={matchday} />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Results results={results} />
+                        </Grid>
+                        <Grid item xs={12} >
+                            <AllTimeTable entries={allTimeTable} />
+                        </Grid>
+                        <Grid item xs={12} md={8}>
+                            <AllTimeTable entries={allTimeTable} />
+                        </Grid>
+                        <Grid item xs={12} md={4}>
+                            <AllTimeTable entries={allTimeTable} />
+                        </Grid>
+                    </Grid>
                 </React.Fragment>}
             </React.Fragment>
         );
