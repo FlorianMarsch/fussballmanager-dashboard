@@ -1,5 +1,6 @@
 {
   "name": "fussballmanager-dashboard",
+  "homepage": "https://football-api.florianmarsch.de/dashboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
