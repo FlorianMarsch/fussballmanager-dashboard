@@ -32,7 +32,7 @@ class DivisionalTable extends React.Component {
             }).flatMap((division, index) => {
 
                 const divisionalItems = division[0].map((element, index) => {
-                    console.log("element ", element);
+
 
                     return (
 
