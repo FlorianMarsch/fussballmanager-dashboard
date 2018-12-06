@@ -7,6 +7,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Matchday from './Matchday';
 import Results from './Results';
 import AllTimeTable from './AllTimeTable';
+import DivisionalTable from './DivisionalTable'
 
 
 class Dashboard extends React.Component {
@@ -35,7 +36,7 @@ class Dashboard extends React.Component {
 
     render() {
 
-        const { loading, matchday, results, allTimeTable } = this.state;
+        const { loading, matchday, results, allTimeTable, divisionalTables } = this.state;
 
         return (
             <React.Fragment >
@@ -57,7 +58,7 @@ class Dashboard extends React.Component {
                             <Results results={results} />
                         </Grid>
                         <Grid item xs={12} >
-                            <AllTimeTable entries={allTimeTable} />
+                            <DivisionalTable entries={divisionalTables} />
                         </Grid>
                         <Grid item xs={12} md={8}>
                             <AllTimeTable entries={allTimeTable} />

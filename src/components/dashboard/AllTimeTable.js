@@ -23,7 +23,7 @@ class AllTimeTable extends React.Component {
         const { entries } = this.props;
 
         const list = entries.map((element, index) => {
-            console.log(element);
+
             return (
 
 

@@ -20,7 +20,6 @@ class Match extends React.Component {
 
         const { match } = this.props;
 
-        console.log(match);
 
         return (
             <React.Fragment>
