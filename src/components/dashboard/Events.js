@@ -23,7 +23,7 @@ class Events extends React.Component {
         const { entries } = this.props;
 
         const list = entries.map((element, index) => {
-            console.log(element);
+
             return (
 
 
@@ -33,13 +33,10 @@ class Events extends React.Component {
                     </ListItemIcon>
                     <ListItemText
                         primary={element.name}
-                        secondary={element.trainer.name}
+                        secondary={element.trainer.name + " - " + element.event}
 
                     />
-                    <ListItemText
-                        primary={element.event}
-                        primaryTypographyProps={{ align: 'right' }}
-                    />
+
 
                 </ListItem>
             );

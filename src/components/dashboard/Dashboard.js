@@ -51,7 +51,7 @@ class Dashboard extends React.Component {
                         </div>
                     </React.Fragment>}
                 {!loading && <React.Fragment>
-                    <Grid container justify="space-between" alignItems="center" direction="row">
+                    <Grid container justify="space-between" alignItems="flex-start" direction="row">
                         <Grid item xs={12}>
                             <Matchday matchday={matchday} />
                         </Grid>
