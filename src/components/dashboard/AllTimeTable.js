@@ -17,7 +17,7 @@ class AllTimeTable extends React.Component {
 
         const { entries } = this.props;
 
-        const list = entries.map((element, index) => <TrainerPoints element={element} index={index} key={element.id} />);
+        const list = entries.filter(element => element.won > 0).map((element, index) => <TrainerPoints element={element} index={index} key={element.id} />);
 
 
         return (
