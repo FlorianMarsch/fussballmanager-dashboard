@@ -8,6 +8,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Navigator from './Navigator';
 import Dashboard from './dashboard/Dashboard';
 import Header from './Header';
+import { Switch, Route } from 'react-router-dom';
 
 let theme = createMuiTheme({
 
@@ -76,7 +77,12 @@ class Paperbase extends React.Component {
 
 
                         <Header onDrawerToggle={this.handleDrawerToggle} />
-                        <Dashboard />
+                        <Switch>
+                            <Route exact path='/' component={Dashboard }/>
+                            <Route path='/Dashboard' component={Dashboard }/>
+                           
+                        </Switch>
+                        
 
                     </div>
                 </div>

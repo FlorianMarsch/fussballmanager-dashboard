@@ -16,6 +16,7 @@ import TimerIcon from '@material-ui/icons/Timer';
 import SettingsIcon from '@material-ui/icons/Settings';
 import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
 
+import { Link } from 'react-router-dom'
 const categories = [
     {
         id: 'The Game',
@@ -68,7 +69,7 @@ const styles = theme => ({
         color: '#4fc3f7',
     },
     itemPrimary: {
-        color: 'inherit',
+        color: theme.palette.common.white,
         fontSize: theme.typography.fontSize,
         '&$textDense': {
             fontSize: theme.typography.fontSize,
@@ -124,14 +125,19 @@ function Navigator(props) {
                                 )}
                             >
                                 <ListItemIcon>{icon}</ListItemIcon>
-                                <ListItemText
-                                    classes={{
-                                        primary: classes.itemPrimary,
-                                        textDense: classes.textDense,
-                                    }}
-                                >
-                                    {childId}
-                                </ListItemText>
+
+                                <Link
+                                    to={'/' + childId}>
+                                    <ListItemText
+                                        classes={{
+                                            primary: classes.itemPrimary,
+                                            textDense: classes.textDense,
+                                        }}>
+                                        {childId}
+                                    </ListItemText>
+                                </Link>
+
+
                             </ListItem>
                         ))}
                         <Divider className={classes.divider} />
