@@ -18,22 +18,9 @@ import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
 
 import { Link } from 'react-router-dom'
 const categories = [
-    {
-        id: 'The Game',
-        children: [
-            { id: 'Dashboard', icon: <DasboardIcon />, active: true },
-            { id: 'Statistiken', icon: <BarChart /> },
-            { id: 'Player Inside', icon: <TransferWithinAStation /> }
-        ],
-    },
-    {
-        id: 'Quality',
-        children: [
-            { id: 'Analytics', icon: <SettingsIcon /> },
-            { id: 'Performance', icon: <TimerIcon /> },
-            { id: 'Test Lab', icon: <PhonelinkSetupIcon /> },
-        ],
-    },
+    { id: 'Dashboard', icon: <DasboardIcon />, active: true },
+    { id: 'Statistiken', icon: <BarChart /> },
+    { id: 'Player Inside', icon: <TransferWithinAStation /> }
 ];
 
 const styles = theme => ({
@@ -69,7 +56,7 @@ const styles = theme => ({
         color: '#4fc3f7',
     },
     itemPrimary: {
-        color: theme.palette.common.white,
+        color: 'inherit',
         fontSize: theme.typography.fontSize,
         '&$textDense': {
             fontSize: theme.typography.fontSize,
@@ -102,47 +89,27 @@ function Navigator(props) {
                         Project Overview
           </ListItemText>
                 </ListItem>
-                {categories.map(({ id, children }) => (
-                    <React.Fragment key={id}>
-                        <ListItem className={classes.categoryHeader}>
-                            <ListItemText
-                                classes={{
-                                    primary: classes.categoryHeaderPrimary,
-                                }}
-                            >
-                                {id}
+                {categories.map(({ id: childId, icon, active }) => (
+                    <Link
+                        to={'/' + childId}>
+                        <ListItem
+                            button
+                            dense
+                            key={childId}
+                            className={classNames(
+                                classes.item,
+                                classes.itemActionable,
+                                active && classes.itemActiveItem,
+                            )}>
+                            <ListItemIcon>{icon}</ListItemIcon>
+                            <ListItemText>
+                                {childId}
                             </ListItemText>
                         </ListItem>
-                        {children.map(({ id: childId, icon, active }) => (
-                            <ListItem
-                                button
-                                dense
-                                key={childId}
-                                className={classNames(
-                                    classes.item,
-                                    classes.itemActionable,
-                                    active && classes.itemActiveItem,
-                                )}
-                            >
-                                <ListItemIcon>{icon}</ListItemIcon>
-
-                                <Link
-                                    to={'/' + childId}>
-                                    <ListItemText
-                                        classes={{
-                                            primary: classes.itemPrimary,
-                                            textDense: classes.textDense,
-                                        }}>
-                                        {childId}
-                                    </ListItemText>
-                                </Link>
-
-
-                            </ListItem>
-                        ))}
-                        <Divider className={classes.divider} />
-                    </React.Fragment>
+                    </Link>
                 ))}
+                <Divider className={classes.divider} />
+
             </List>
         </Drawer>
     );
