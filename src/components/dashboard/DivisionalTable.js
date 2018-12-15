@@ -25,8 +25,19 @@ class DivisionalTable extends React.Component {
 
                 return mapped;
             }).flatMap((division, index) => {
+                let divisionname = divsionNames[index];
+                let upToDivision = divsionNames[index - 1];
+                let downToDivision = divsionNames[index + 1];
 
-                const divisionalItems = division[0].map((element, index) => <TrainerPoints element={element} index={index} key={element.id} />);
+                const divisionalItems = division[0].map((element, index) => {
+
+                    let isLeagueClimber = (divisionname === 'B' || divisionname === 'C') && index === 0;
+                    let isRelegatedTeam = (divisionname === 'B' || divisionname === 'A') && index === 3;
+                    let upTo = upToDivision;
+                    let downTo = downToDivision;
+
+                    return <TrainerPoints element={element} index={index} key={element.id} climber={isLeagueClimber} upTo={upTo} relegated={isRelegatedTeam} downTo={downTo} />
+                });
 
                 return (
                     <Grid item xs={12} md={4} >
@@ -35,7 +46,7 @@ class DivisionalTable extends React.Component {
                                 <Grid container spacing={16} alignItems="center">
                                     <Grid item>
                                         <Typography color="textSecondary" align="center">
-                                            Division {divsionNames[index]}
+                                            Division {divisionname}
                                         </Typography>
                                     </Grid>
                                 </Grid>

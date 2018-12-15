@@ -6,8 +6,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 
 import Avatar from '@material-ui/core/Avatar';
+import ClimberIcon from '@material-ui/icons/ArrowUpwardOutlined';
+import RelegatedIcon from '@material-ui/icons/ArrowDownwardTwoTone';
 
-
+import Grid from '@material-ui/core/Grid';
 class TrainerPoints extends React.Component {
 
 
@@ -16,8 +18,8 @@ class TrainerPoints extends React.Component {
 
     render() {
 
-        const { element, index } = this.props;
-
+        const { element, index, climber = false, relegated = false, downTo, upTo } = this.props;
+        console.log(this.props)
 
         return (
 
@@ -27,7 +29,21 @@ class TrainerPoints extends React.Component {
 
 
                 <ListItemIcon>
-                    <Avatar src={element.trainer.imageUrl} />
+                    <Grid container justify="space-between" alignItems="center" direction="column">
+                        <div style={{ display: climber ? 'block' : 'none' }}>
+                            <Grid container justify="space-between" alignItems="center" direction="row">
+                                <ClimberIcon />
+                                {upTo}
+                            </Grid>
+                        </div>
+                        <Avatar src={element.trainer.imageUrl} />
+                        <div style={{ display: relegated ? 'block' : 'none' }}>
+                            <Grid container justify="space-between" alignItems="center" direction="row">
+                                <RelegatedIcon />
+                                {downTo}
+                            </Grid>
+                        </div>
+                    </Grid>
                 </ListItemIcon>
                 <ListItemText
                     primary={(index + 1) + ". " + element.trainer.name}
@@ -42,12 +58,14 @@ class TrainerPoints extends React.Component {
 
                 />
 
+
                 <ListItemText
                     primary={element.points}
                     primaryTypographyProps={{ align: 'right' }}
                     secondary={"(+" + element.betterPoints + ")"}
                     secondaryTypographyProps={{ align: 'right' }}
                 />
+
 
             </ListItem >
         );
